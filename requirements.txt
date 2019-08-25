@@ -1,0 +1,7 @@
+Babel==2.7.0
+Django==2.2.4
+django-phone-field==1.8.0
+django-phonenumber-field==3.0.1
+phonenumbers==8.10.17
+pytz==2019.2
+sqlparse==0.3.0

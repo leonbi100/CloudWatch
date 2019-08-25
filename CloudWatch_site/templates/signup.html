@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container bg">
+	<div class = "card">
+		<form method="post">
+		  {% csrf_token %}
+		  {{ form.as_p }}
+		  <button type="submit">Sign up</button>
+		</form>
+	</div>
+	<div class="bird-container bird-container--one">
+	    <div class="bird bird--one"></div>
+	</div>
+
+	<div class="bird-container bird-container--two">
+	    <div class="bird bird--two"></div>
+	</div>
+
+	<div class="bird-container bird-container--three">
+	    <div class="bird bird--three"></div>
+	</div>
+
+	<div class="bird-container bird-container--four">
+	    <div class="bird bird--four"></div>
+	</div>
+</div>
+
+{% endblock %}
