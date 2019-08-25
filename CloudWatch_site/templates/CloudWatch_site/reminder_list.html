@@ -5,12 +5,11 @@
 {% block content %}
     <div class="container bg">
     <div class = 'card'>
-    {% if user.is_authenticated %}
-      <h2>Hi {{ user.first_name }}! Welcome to CloudWatch</h2>
-      <h4>Click <a href="{% url 'notifications' %}">here</a> to get started</h4>
-    {% else %}
-      <h2>Welcome to CloudWatch</h2>
-      <a href="{% url 'users:signup' %}">Click here to signup</a>
+    <h2>Notification List</h2>
+    {% if notification_list %}
+        {% for notification in notification_list %}
+            {{ notification.time }}
+        {% endfor %}
     {% endif %}
     </div>
     <div class="bird-container bird-container--one">
