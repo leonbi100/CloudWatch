@@ -6,12 +6,48 @@
     box-sizing: border-box;
 }
 
+a{
+    font-family: 'Poppins';
+    color: black;
+}
+
 h2 {
     font-family: 'Poppins';
     color: black;
     text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
     position: relative;
     z-index: 3;
+}
+
+h4 {
+    font-family: 'Poppins';
+    color: black;
+    text-shadow: 0px 1px 1px rgba(255,255,255,0.6);
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+table, td, th {  
+  text-align: left;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 10px;
+  padding-right: 100px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-rows:hover {background-color:#f5f5f5;}
+
+
+.table-title{
+    padding-right: 150px;
 }
 
 .container {
@@ -222,3 +258,4 @@ li a:hover:not(.active) {
   background-color: #555;
   color: white;
 }
+

@@ -1,6 +1,6 @@
 from twilio.rest import Client
 from darksky import forecast
-from django_cardME.local_settings import account_sid, auth_token, Dark_Sky_Key
+from django_CloudWatch.local_settings import account_sid, auth_token, Dark_Sky_Key
 from datetime import date, timedelta
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="specify_your_app_name_here")
@@ -8,7 +8,7 @@ geolocator = Nominatim(user_agent="specify_your_app_name_here")
 def weather():
     latitude, longitude = get_lat_long('231 Gennessee St. San Francisco') 
     message = get_forecast((latitude, longitude))
-    print(message)
+    send_sms(message)
 
 
 def get_lat_long(address):
@@ -19,9 +19,8 @@ def get_lat_long(address):
 
 def get_forecast(location):
     weather = forecast(Dark_Sky_Key, location[0], location[1])
-    print(weather.summary)
-    print(weather.windSpeed)
-    print(weather.temperatureMax)
+    return "Weekly Summary: {} \n Today's Wind Speed: {}".format(weather.daily.summary, weather.windSpeed)
+    # print(weather.temperatureMax)
     # with forecast(Dark_Sky_Key, *PLACE) as place:
     #     weekly_summary = place.daily.summary
     #     print(weekly_summary)

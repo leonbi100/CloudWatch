@@ -5,12 +5,11 @@
 {% block content %}
     <div class="container bg">
     <div class = 'card'>
-    <h2>Notification List</h2>
-    {% if notification_list %}
-        {% for notification in notification_list %}
-            {{ notification.time }}
-        {% endfor %}
-    {% endif %}
+    <h2>Set Notification</h2>
+      <form action="" method="post">{% csrf_token %}
+        <a>Are you sure you want to delete "{{ object.name }}"?</a>
+        <input type="submit" value="Confirm" />
+      </form>
     </div>
     <div class="bird-container bird-container--one">
         <div class="bird bird--one"></div>

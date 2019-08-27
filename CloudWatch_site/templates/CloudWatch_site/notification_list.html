@@ -1,31 +1,57 @@
 {% extends 'base.html' %}
-
 {% block title %}Home{% endblock %}
-
 {% block content %}
-    <div class="container bg">
-    <div class = 'card'>
-    <h2>Notification List</h2>
-    {% if notification_list %}
-        {% for notification in notification_list %}
-            {{ notification.time }}
-        {% endfor %}
+  <div class="container bg">
+  <div class = 'card'>
+  <h2>Notification List</h2>
+  <a href="{% url 'notifications_create' %}">Add Notification</a>
+  {% if notification_list %}
+    <table class="table" id="clickable">
+      <thead>
+        <tr>
+          <th class="table-title">Name</th>
+          <th>Time</th>
+          <th>Set</th>
+        </tr>
+      </thead>
+      {% for notification in notification_list %}
+        <tr class="table-rows">
+          <td class="table-title">
+            <a href="{% url 'notifications_update' pk=notification.id %}">{{ notification.name }}</a>
+          </td>
+          <td>{{ notification.time }}</td>
+          <td>{{ notification.is_set }}</td>
+          <td><a href="{% url 'notifications_delete' pk=notification.id %}">x</a></td>
+        </tr>
+      {% endfor %}
     {% endif %}
-    </div>
-    <div class="bird-container bird-container--one">
-        <div class="bird bird--one"></div>
-    </div>
+    </table>
+  </div>
+  <div class="bird-container bird-container--one">
+    <div class="bird bird--one"></div>
+  </div>
     
-    <div class="bird-container bird-container--two">
-        <div class="bird bird--two"></div>
-    </div>
+  <div class="bird-container bird-container--two">
+    <div class="bird bird--two"></div>
+  </div>
     
-    <div class="bird-container bird-container--three">
-        <div class="bird bird--three"></div>
-    </div>
+  <div class="bird-container bird-container--three">
+    <div class="bird bird--three"></div>
+  </div>
     
-    <div class="bird-container bird-container--four">
-        <div class="bird bird--four"></div>
-    </div>
-    </div>
+  <div class="bird-container bird-container--four">
+    <div class="bird bird--four"></div>
+  </div>
+  </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#clickable tr').click(function() {
+        var href = $(this).find("a").attr("href");
+        if(href) {
+            window.location = href;
+        }
+    });
+});    
+</script>
 {% endblock %}
