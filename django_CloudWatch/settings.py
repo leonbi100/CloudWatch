@@ -11,17 +11,22 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+# from boto.s3.connection import S3Connection
+SECRET_KEY = os.environ.get('APP_SECRET_KEY', 'unsafe-secret-key')
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
+Dark_Sky_Key = os.environ.get('Dark_Sky_Key')
 
 # from .local_settings import SECRET_KEY, ALLOWED_HOSTS, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, Dark_Sky_Key
 # from .local_settings import CELERY_BROKER_URL, CELERY_RESULT_BACKEND, CELERY_ACCEPT_CONTENT, CELERY_TASK_SERIALIZER, CELERY_RESULT_SERIALIZER, CELERY_TIMEZONE
 
 
-# SECRET_KEY = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+# SECRET_KEY = S3Connection(os.environ['S3_KEY'], os.environ['SECRET_KEY'])
 # TWILIO_ACCOUNT_SID = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # TWILIO_AUTH_TOKEN = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # Dark_Sky_Key = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 ALLOWED_HOSTS = ['.ngrok.io', 'localhost']
@@ -146,7 +151,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
