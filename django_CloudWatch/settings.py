@@ -11,13 +11,29 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
-from .local_settings import SECRET_KEY, ALLOWED_HOSTS, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, Dark_Sky_Key
-from .local_settings import CELERY_BROKER_URL, CELERY_RESULT_BACKEND, CELERY_ACCEPT_CONTENT, CELERY_TASK_SERIALIZER, CELERY_RESULT_SERIALIZER, CELERY_TIMEZONE
+# from .local_settings import SECRET_KEY, ALLOWED_HOSTS, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, Dark_Sky_Key
+# from .local_settings import CELERY_BROKER_URL, CELERY_RESULT_BACKEND, CELERY_ACCEPT_CONTENT, CELERY_TASK_SERIALIZER, CELERY_RESULT_SERIALIZER, CELERY_TIMEZONE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# SECRET_KEY = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+# TWILIO_ACCOUNT_SID = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+# TWILIO_AUTH_TOKEN = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+# Dark_Sky_Key = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
+
+
+ALLOWED_HOSTS = ['.ngrok.io', 'localhost']
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/Los_Angeles'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
