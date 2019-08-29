@@ -23,8 +23,8 @@ def debug_task(self):
     print('Request: {0!r}'.format(self.request))
 
 app.conf.beat_schedule = {
-    'send': {
-        'task': 'send_notification',
-        'schedule': crontab(minute=0, hour=9),
+    'check-database-every-minute': {
+        'task': 'query_database',
+        'schedule': crontab(),
     },
 }

@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 import os
 
-# from .local_settings import SECRET_KEY, ALLOWED_HOSTS
-# from .local_settings import CELERY_BROKER_URL, CELERY_RESULT_BACKEND, CELERY_ACCEPT_CONTENT, CELERY_TASK_SERIALIZER, CELERY_RESULT_SERIALIZER, CELERY_TIMEZONE
+from .local_settings import SECRET_KEY, ALLOWED_HOSTS, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, Dark_Sky_Key
+from .local_settings import CELERY_BROKER_URL, CELERY_RESULT_BACKEND, CELERY_ACCEPT_CONTENT, CELERY_TASK_SERIALIZER, CELERY_RESULT_SERIALIZER, CELERY_TIMEZONE
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,13 +25,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'Optional default value')
-account_sid = os.getenv('account_sid', 'Optional default value')
-auth_token = os.getenv('auth_token', 'Optional default value')
-Dark_Sky_Key = os.getenv('Dark_Sky_Key', 'Optional default value')
+# os.getenv('account_sid', 'Optional default value')
+
+# SECRET_KEY = SECRET_KEY
+# account_sid = account_sid
+# auth_token = auth_token
+# Dark_Sky_Key = Dark_Sky_Key
 
 
-ALLOWED_HOSTS = ['.ngrok.io', 'localhost']
 
 # Application definition
 
@@ -142,11 +143,4 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'America/Los_Angeles'
 

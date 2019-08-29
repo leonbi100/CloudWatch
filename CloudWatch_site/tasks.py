@@ -1,14 +1,15 @@
 from __future__ import absolute_import, unicode_literals
 import random
-from celery.decorators import task, periodic_task
+from celery.decorators import task
 from celery.task.schedules import crontab
-from . import views
+from .models import Notification
+from .functions import send_notification
+from datetime import datetime, time
 
-@periodic_task(
-    run_every=(crontab(minute=18, hour=1)),
-    name="send_notification",
-    ignore_result=True
-)
-def send_notification():
-	print('tried')
-	views.weather()
+@task(name='query_database')
+def query_database():
+    curr_time = str(datetime.now().time().strftime("%H:%M"))
+    notification_query = Notification.objects.filter(time__contains=curr_time)
+    for notification in notification_query:
+        send_notification(notification)
+
