@@ -8,7 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Notification
 from twilio.rest import Client
 from darksky import forecast
-from django_CloudWatch.local_settings import account_sid, auth_token, Dark_Sky_Key
+from django_CloudWatch.settings import account_sid, auth_token, Dark_Sky_Key
 from datetime import date, timedelta
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="specify_your_app_name_here")
