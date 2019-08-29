@@ -17,8 +17,6 @@ s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # from .local_settings import SECRET_KEY, ALLOWED_HOSTS, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, Dark_Sky_Key
 # from .local_settings import CELERY_BROKER_URL, CELERY_RESULT_BACKEND, CELERY_ACCEPT_CONTENT, CELERY_TASK_SERIALIZER, CELERY_RESULT_SERIALIZER, CELERY_TIMEZONE
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECRET_KEY = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # TWILIO_ACCOUNT_SID = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
@@ -146,11 +144,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
-
+# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
