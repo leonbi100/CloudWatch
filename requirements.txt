@@ -22,7 +22,7 @@ importlib-metadata==0.19
 kombu==4.6.4
 more-itertools==7.2.0
 phonenumbers==8.10.17
-PyJWT==1.7.1
+PyJWT==2.4.0
 PySocks==1.7.0
 python-crontab==2.3.8
 python-dateutil==2.8.0
